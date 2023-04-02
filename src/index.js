@@ -1,6 +1,12 @@
 
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
+
+import * as ReactDOMClient from 'react-dom/client';
+
+
+
+//ReactDOMClient.hydrateRoot(/*...*/);
 
 import {BaseProvider, LightTheme} from 'baseui';
 import { Provider as StyletronProvider } from "styletron-react";
@@ -15,11 +21,10 @@ function App() {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <StyletronProvider value={engine}>
+const root = ReactDOMClient.createRoot(rootElement)
+root.render(<StyletronProvider value={engine}>
     <BaseProvider theme={LightTheme}>
-      <App />
+        <App />
     </BaseProvider>
-  </StyletronProvider>,
-  rootElement
-);
+</StyletronProvider>)
+
